@@ -780,5 +780,17 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         [EnumMember(Value = "salesbysaleschannel")]
         SalesBySalesChannel,
+
+        /// <summary>
+        /// Slot entity type.
+        /// </summary>
+        [EnumMember(Value = "slot")]
+        Slot,
+
+        /// <summary>
+        /// Zone entity type.
+        /// </summary>
+        [EnumMember(Value = "storezone")]
+        StoreZone,
     }
 }
