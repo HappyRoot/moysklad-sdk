@@ -1,7 +1,6 @@
 using Confiti.MoySklad.Remap.Api;
 using Confiti.MoySklad.Remap.Client;
 using Confiti.MoySklad.Remap.Entities;
-using Confiti.MoySklad.Remap.Models;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
@@ -21,7 +20,7 @@ namespace Confiti.MoySklad.Remap.IntegrationTests.Api
         {
             var query = new ApiParameterBuilder<Slot>();
             query.Limit(100);
-            var storeId = Guid.Parse("4b9badc8-3770-11ee-0a80-0e33000dd212");
+            var storeId = Guid.Parse("1b9badc8-2770-11ee-0a80-0e33000dd214");
             var response = await _subject.GetAllAsync(storeId, query);
 
             response.StatusCode.Should().Be(404);
