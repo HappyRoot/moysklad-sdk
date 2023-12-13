@@ -198,6 +198,11 @@ namespace Confiti.MoySklad.Remap.Api
         /// </summary>
         public WebHookApi WebHook => GetApi<WebHookApi>();
 
+        /// <summary>
+        /// Gets the <see cref="SlotsApi"/>.
+        /// </summary>
+        public SlotsApi Slots => GetApi<SlotsApi>();
+
         #endregion Properties
 
         #region Ctor

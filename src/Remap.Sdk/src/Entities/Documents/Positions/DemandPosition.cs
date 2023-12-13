@@ -29,6 +29,10 @@
         /// <value>The vat.</value>
         public int? Vat { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Slot.
+        /// </summary>
+        public Slot Slot { get; set; }
         #endregion Properties
     }
 }

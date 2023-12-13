@@ -36,7 +36,7 @@ namespace Confiti.MoySklad.Remap.Api
         /// <param name="storeId"></param>
         /// <param name="query">The query builder.</param>
         /// <returns>The <see cref="Task"/> containing the API response with the list of <see cref="Slot"/>.</returns>
-        public virtual Task<ApiResponse<EntitiesResponse<Slot>>> GetAllAsync(Guid storeId, ApiParameterBuilder<Slot> query = null)
+        public virtual Task<ApiResponse<EntitiesResponse<Slot>>> GetAllAsync(Guid storeId, ApiParameterBuilder query = null)
         {
             var requestContext = new RequestContext();
             var baseAddress = Client.BaseAddress is null ? BASE_URL : Client.BaseAddress.ToString();

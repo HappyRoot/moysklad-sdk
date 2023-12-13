@@ -82,13 +82,13 @@ namespace Confiti.MoySklad.Remap.Entities
         /// Gets or sets the Slots.
         /// </summary>
         /// <value>The date when the entity has been updated.</value>
-        public Slot[] Slots { get; set; }
+        public PagedEntities<Slot> Slots { get; set; }
 
         /// <summary>
         /// Gets or sets the Slots.
         /// </summary>
         /// <value>The date when the entity has been updated.</value>
-        public Zone[] Zones { get; set; }
+        public PagedEntities<Zone> Zones { get; set; }
 
         #endregion
     }
