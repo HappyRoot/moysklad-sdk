@@ -203,6 +203,11 @@ namespace Confiti.MoySklad.Remap.Api
         /// </summary>
         public SlotsApi Slots => GetApi<SlotsApi>();
 
+        /// <summary>
+        /// Gets the <see cref="SlotsApi"/>.
+        /// </summary>
+        public PurchaseOrderApi PurchaseOrders => GetApi<PurchaseOrderApi>();
+
         #endregion Properties
 
         #region Ctor
