@@ -84,6 +84,11 @@ namespace Confiti.MoySklad.Remap.Api
         public ExpenseItemApi ExpenseItem => GetApi<ExpenseItemApi>();
 
         /// <summary>
+        /// Gets the <see cref="InventoryApi"/>.
+        /// </summary>
+        public InventoryApi Inventory => GetApi<InventoryApi>();
+
+        /// <summary>
         /// Gets the <see cref="InvoiceOutApi"/>.
         /// </summary>
         public InvoiceOutApi InvoiceOut => GetApi<InvoiceOutApi>();
@@ -144,6 +149,11 @@ namespace Confiti.MoySklad.Remap.Api
         public PurchaseReturnApi PurchaseReturn => GetApi<PurchaseReturnApi>();
 
         /// <summary>
+        /// Gets the <see cref="SlotsApi"/>.
+        /// </summary>
+        public PurchaseOrderApi PurchaseOrders => GetApi<PurchaseOrderApi>();
+
+        /// <summary>
         /// Gets the <see cref="ReportProfitApi"/>.
         /// </summary>
         public ReportProfitApi ReportProfit => GetApi<ReportProfitApi>();
@@ -174,6 +184,11 @@ namespace Confiti.MoySklad.Remap.Api
         public ServiceApi Service => GetApi<ServiceApi>();
 
         /// <summary>
+        /// Gets the <see cref="SlotsApi"/>.
+        /// </summary>
+        public SlotsApi Slots => GetApi<SlotsApi>();
+
+        /// <summary>
         /// Gets the <see cref="StoreApi"/>.
         /// </summary>
         public StoreApi Store => GetApi<StoreApi>();
@@ -197,16 +212,6 @@ namespace Confiti.MoySklad.Remap.Api
         /// Gets the <see cref="WebHookApi"/>.
         /// </summary>
         public WebHookApi WebHook => GetApi<WebHookApi>();
-
-        /// <summary>
-        /// Gets the <see cref="SlotsApi"/>.
-        /// </summary>
-        public SlotsApi Slots => GetApi<SlotsApi>();
-
-        /// <summary>
-        /// Gets the <see cref="SlotsApi"/>.
-        /// </summary>
-        public PurchaseOrderApi PurchaseOrders => GetApi<PurchaseOrderApi>();
 
         #endregion Properties
 
