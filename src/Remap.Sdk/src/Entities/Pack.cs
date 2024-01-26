@@ -12,7 +12,7 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <summary>
         /// Gets or sets the parent pack.
         /// </summary>
-        public Pack Parentpack { get; set; }
+        public ParentPack Parentpack { get; set; }
 
         /// <summary>
         /// Gets or sets the barcodes.
