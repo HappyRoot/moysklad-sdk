@@ -792,5 +792,10 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         [EnumMember(Value = "storezone")]
         StoreZone,
+        /// <summary>
+        /// Zone entity type.
+        /// </summary>
+        [EnumMember(Value = "goodpack")]
+        GoodPack,
     }
 }
