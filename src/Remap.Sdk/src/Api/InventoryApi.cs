@@ -1,7 +1,11 @@
 using Confiti.MoySklad.Remap.Client;
 using Confiti.MoySklad.Remap.Entities;
 using Confiti.MoySklad.Remap.Models;
+using System;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace Confiti.MoySklad.Remap.Api
 {
@@ -32,5 +36,16 @@ namespace Confiti.MoySklad.Remap.Api
         }
 
         #endregion Ctor
+
+        /// <summary>
+        /// Пересчитать расчетный остаток в позициях документа "Инвентаризация". В результате, значение поля calculatedQuantity у позиций инвентаризации изменится и документ будет пересохранен
+        /// </summary>
+        /// <param name="inventoryId"></param>
+        /// <returns></returns>
+        public virtual async Task RecalculatedQuantity(Guid inventoryId)
+        {
+            var requestContext = new RequestContext($"api/remap/1.2/rpc/inventory/{inventoryId}/recalcCalculatedQuantity", HttpMethod.Put);
+            await CallAsync(requestContext).ConfigureAwait(false);
+        }
     }
 }
