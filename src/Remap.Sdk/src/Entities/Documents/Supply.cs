@@ -117,6 +117,12 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <value>The vat sum.</value>
         public long? VatSum { get; set; }
 
+        /// <summary>
+        /// Gets or sets the purchase order.
+        /// </summary>
+        /// <value>The purchase order.</value>
+        public PurchaseOrder PurchaseOrder { get; set; }
+
         #endregion Properties
     }
 }
