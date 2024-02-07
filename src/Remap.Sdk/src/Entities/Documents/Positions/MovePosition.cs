@@ -16,6 +16,15 @@
         /// <value>The overhead.</value>
         public long? Overhead { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Source Slot.
+        /// </summary>
+        public Slot SourceSlot { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Target Slot.
+        /// </summary>
+        public Slot TargetSlot { get; set; }
         #endregion Properties
     }
 }
