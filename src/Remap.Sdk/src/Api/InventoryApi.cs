@@ -37,6 +37,8 @@ namespace Confiti.MoySklad.Remap.Api
 
         #endregion Ctor
 
+        #region Methods
+
         /// <summary>
         /// Пересчитать расчетный остаток в позициях документа "Инвентаризация". В результате, значение поля calculatedQuantity у позиций инвентаризации изменится и документ будет пересохранен
         /// </summary>
@@ -47,5 +49,7 @@ namespace Confiti.MoySklad.Remap.Api
             var requestContext = new RequestContext($"api/remap/1.2/rpc/inventory/{inventoryId}/recalcCalculatedQuantity", HttpMethod.Put);
             await CallAsync(requestContext).ConfigureAwait(false);
         }
+
+        #endregion
     }
 }
