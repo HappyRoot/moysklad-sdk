@@ -12,7 +12,7 @@ namespace Confiti.MoySklad.Remap.Api
     /// </summary>
     public class SlotsApi : ApiAccessor
     {
-        private const string BASE_URL = "/api/remap/1.2/entity/store";
+        private const string BASE_URL = "api/remap/1.2/entity/store";
         #region Ctor
 
         /// <summary>
@@ -39,8 +39,9 @@ namespace Confiti.MoySklad.Remap.Api
         public virtual Task<ApiResponse<EntitiesResponse<Slot>>> GetAllAsync(Guid storeId, ApiParameterBuilder query = null)
         {
             var requestContext = new RequestContext();
-            var baseAddress = Client.BaseAddress is null ? BASE_URL : Client.BaseAddress.ToString();
-            requestContext.WithPath($"{baseAddress}/{storeId}/slots");
+            var baseAddress = Client.BaseAddress is null ? new Uri(ApiDefaults.DEFAULT_BASE_PATH) : Client.BaseAddress;
+
+            requestContext.WithPath($"{baseAddress}{BASE_URL}/{storeId}/slots");
 
             if (query != null)
                 requestContext.WithQuery(query.Build());

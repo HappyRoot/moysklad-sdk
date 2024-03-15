@@ -56,9 +56,29 @@ namespace Confiti.MoySklad.Remap.Entities
         Tires,
 
         /// <summary>
-        /// Tracking type for alternative tobacco products.
+        /// Tracking type for OTP products.
         /// </summary>
         [EnumMember(Value = "OTP")]
         Otp,
+        /// <summary>
+        /// Tracking type for Milk products.
+        /// </summary>
+        [EnumMember(Value = "MILK")]
+        Milk,
+        /// <summary>
+        /// Tracking type for Beer products.
+        /// </summary>
+        [EnumMember(Value = "BEER_ALCOHOL")]
+        BeerAlcohol,
+        /// <summary>
+        /// Tracking type for NCP products.
+        /// </summary>
+        [EnumMember(Value = "NCP")]
+        NCP,
+        /// <summary>
+        /// Tracking type for NCP products.
+        /// </summary>
+        [EnumMember(Value = "WATER")]
+        Water,
     }
 }

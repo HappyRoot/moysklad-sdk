@@ -8,6 +8,12 @@ namespace Confiti.MoySklad.Remap.Entities
         #region Properties
 
         /// <summary>
+        /// Gets or sets the packs.
+        /// </summary>
+        /// <value>The packs.</value>
+        public Pack[] Packs { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether to the entity is archived.
         /// </summary>
         /// <value>The value indicating whether to the entity is archived.</value>
