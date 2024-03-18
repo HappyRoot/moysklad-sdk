@@ -159,6 +159,11 @@ namespace Confiti.MoySklad.Remap.Api
         public ReportProfitApi ReportProfit => GetApi<ReportProfitApi>();
 
         /// <summary>
+        /// Gets the <see cref="ReportStockApi"/>.
+        /// </summary>
+        public ReportStockApi ReportStock => GetApi<ReportStockApi>();
+
+        /// <summary>
         /// Gets the <see cref="RetailDemandApi"/>.
         /// </summary>
         public RetailDemandApi RetailDemand => GetApi<RetailDemandApi>();
