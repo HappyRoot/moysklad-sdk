@@ -39,6 +39,9 @@ namespace Confiti.MoySklad.Remap.Client
 
                         case EntityType.Bundle:
                             return new Bundle();
+
+                        case EntityType.Consignment:
+                            return new Consignment();
                     }
                 }
             }
