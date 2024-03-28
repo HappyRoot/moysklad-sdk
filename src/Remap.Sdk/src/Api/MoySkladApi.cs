@@ -214,6 +214,11 @@ namespace Confiti.MoySklad.Remap.Api
         public TaskApi Task => GetApi<TaskApi>();
 
         /// <summary>
+        /// Gets the <see cref="UomApi"/>.
+        /// </summary>
+        public UomApi Uom => GetApi<UomApi>();
+       
+        /// <summary>
         /// Gets the <see cref="VariantApi"/>.
         /// </summary>
         public VariantApi Variant => GetApi<VariantApi>();

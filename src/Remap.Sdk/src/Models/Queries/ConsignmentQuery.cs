@@ -4,7 +4,7 @@ using Confiti.MoySklad.Remap.Entities;
 namespace Confiti.MoySklad.Remap.Models
 {
     /// <summary>
-    /// Represents a bundle component query.
+    /// Represents a consignment query.
     /// </summary>
     public class ConsignmentQuery
     {
