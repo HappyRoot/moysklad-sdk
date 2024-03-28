@@ -69,6 +69,11 @@ namespace Confiti.MoySklad.Remap.Api
         public CustomerOrderApi CustomerOrder => GetApi<CustomerOrderApi>();
 
         /// <summary>
+        /// Gets the <see cref="CustomerOrderApi"/>.
+        /// </summary>
+        public ConsignmentApi Consignment => GetApi<ConsignmentApi>();
+        
+        /// <summary>
         /// Gets the <see cref="DemandApi"/>.
         /// </summary>
         public DemandApi Demand => GetApi<DemandApi>();
