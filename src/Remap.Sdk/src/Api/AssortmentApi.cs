@@ -1,6 +1,9 @@
 using Confiti.MoySklad.Remap.Client;
 using Confiti.MoySklad.Remap.Entities;
 using Confiti.MoySklad.Remap.Models;
+using Remap.Sdk.Models;
+using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -41,6 +44,82 @@ namespace Confiti.MoySklad.Remap.Api
                 requestContext.WithQuery(query.Build());
 
             return CallAsync<EntitiesResponse<Assortment>>(requestContext);
+        }
+
+        /// <summary>
+        /// Get async task result
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public virtual Task<ApiResponse<EntitiesResponse<Assortment>>> GetTaskResultAsync(string url)
+        {
+            var requestContext = new RequestContext();
+            requestContext.WithPath(url);
+
+            return CallAsync<EntitiesResponse<Assortment>>(requestContext);
+        }
+
+        /// <summary>
+        /// Проверить статус выполнения задачи
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public virtual async Task<AsyncTask> GetTaskStateAsync(string url)
+        {            
+            var requestContext = new RequestContext();
+            requestContext.WithPath(url);
+
+            var httpResponse = await InternalCallAsync(requestContext);
+            var model = (AsyncTask)await DeserializeAsync(httpResponse, typeof(AsyncTask));
+            return model;
+        }
+
+        /// <summary>
+        /// Выполнить запрос в асинхронном режиме
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiException"></exception>
+        public virtual async Task<ApiCreateAsyncTaskResponse> CreateTaskAsync(AssortmentApiParameterBuilder query = null)
+        {
+            const string locationHeader = "Location";
+            const string contentLocationHeader = "Content-Location";
+
+            var requestContext = new RequestContext();
+
+            if (query != null)
+            {
+                query = new AssortmentApiParameterBuilder();
+            }
+            query
+                .Parameter("async")
+                .Should()
+                .Be("true");
+            requestContext
+                .WithQuery(query.Build());
+
+            var httpResponse = await InternalCallAsync(requestContext);
+            var location = httpResponse.Headers
+                .FirstOrDefault(x => x.Key == locationHeader)
+                .Value
+                ?.FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(location))
+            {
+                throw new ApiException(500, $"Ошибка запроса в асинхронном режиме: заголовок '{locationHeader}' не найден.");
+            }
+
+            var state = httpResponse.Headers
+                .FirstOrDefault(x => x.Key == contentLocationHeader)
+                .Value
+                ?.FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(location))
+            {
+                throw new ApiException(500, $"Ошибка запроса в асинхронном режиме: заголовок '{contentLocationHeader}' не найден.");
+            }
+
+            return new ApiCreateAsyncTaskResponse(taskStateUrl: state, taskResultUrl: location);
         }
 
         #endregion Methods

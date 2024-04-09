@@ -797,5 +797,11 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         [EnumMember(Value = "goodpack")]
         GoodPack,
+
+        /// <summary>
+        /// Async task type
+        /// </summary>
+        [EnumMember(Value = "async")]
+        Async,
     }
 }
