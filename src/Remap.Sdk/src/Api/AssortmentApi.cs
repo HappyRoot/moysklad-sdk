@@ -82,25 +82,25 @@ namespace Confiti.MoySklad.Remap.Api
         /// <exception cref="ApiException"></exception>
         public virtual async Task<ApiCreateAsyncTaskResponse> CreateTaskAsync(AssortmentApiParameterBuilder query = null)
         {
-            const string locationHeader = "Location";
-            const string contentLocationHeader = "Content-Location";
+            const string locationHeader = "location";
+            const string contentLocationHeader = "content-location";
 
             var requestContext = new RequestContext();
 
-            if (query != null)
+            if (query == null)
             {
                 query = new AssortmentApiParameterBuilder();
             }
+            
             query
-                .Parameter("async")
-                .Should()
-                .Be("true");
+                .Async(true);
+
             requestContext
                 .WithQuery(query.Build());
 
             var httpResponse = await InternalCallAsync(requestContext);
             var location = httpResponse.Headers
-                .FirstOrDefault(x => x.Key == locationHeader)
+                .FirstOrDefault(x => x.Key.ToLower() == locationHeader)
                 .Value
                 ?.FirstOrDefault();
 
@@ -109,12 +109,12 @@ namespace Confiti.MoySklad.Remap.Api
                 throw new ApiException(500, $"Ошибка запроса в асинхронном режиме: заголовок '{locationHeader}' не найден.");
             }
 
-            var state = httpResponse.Headers
-                .FirstOrDefault(x => x.Key == contentLocationHeader)
+            var state = httpResponse.Content.Headers
+                .FirstOrDefault(x => x.Key.ToLower() == contentLocationHeader)
                 .Value
                 ?.FirstOrDefault();
 
-            if (string.IsNullOrWhiteSpace(location))
+            if (string.IsNullOrWhiteSpace(state))
             {
                 throw new ApiException(500, $"Ошибка запроса в асинхронном режиме: заголовок '{contentLocationHeader}' не найден.");
             }

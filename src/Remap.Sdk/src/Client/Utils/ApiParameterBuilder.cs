@@ -16,6 +16,7 @@ namespace Confiti.MoySklad.Remap.Client
         #region Fields
 
         private int? _limit;
+        private bool? _async;
         private string _momentFrom;
         private string _momentTo;
         private int? _offset;
@@ -70,6 +71,9 @@ namespace Confiti.MoySklad.Remap.Client
             if (_limit.HasValue)
                 result["limit"] = _limit.Value.ToString();
 
+            if (_async.HasValue)
+                result["async"] = _async.Value.ToString().ToLower();
+
             if (_offset.HasValue)
                 result["offset"] = _offset.Value.ToString();
 
@@ -101,6 +105,15 @@ namespace Confiti.MoySklad.Remap.Client
                 throw new ApiException(400, "Parameter 'limit' should be in range: 1-1000.");
 
             _limit = value;
+        }
+
+        /// <summary>
+        /// Async Tasks
+        /// </summary>
+        /// <param name="value"></param>
+        public void Async(bool value)
+        {
+            _async = value;
         }
 
         /// <summary>

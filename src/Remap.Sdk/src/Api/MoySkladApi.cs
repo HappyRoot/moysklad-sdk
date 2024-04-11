@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Confiti.MoySklad.Remap.Api
 {
@@ -251,9 +252,14 @@ namespace Confiti.MoySklad.Remap.Api
                 {
                     AutomaticDecompression = DecompressionMethods.GZip
                 };
-
+                
                 _client = new HttpClient(httpClientHandler);
             }
+
+            _client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
+            _client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("br"));
+            _client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("zstd"));
+            _client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
 
             var typesToExclude = new[] {
                 typeof(ImageApi),
