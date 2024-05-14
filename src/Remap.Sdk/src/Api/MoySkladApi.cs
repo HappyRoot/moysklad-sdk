@@ -95,6 +95,11 @@ namespace Confiti.MoySklad.Remap.Api
         public InventoryApi Inventory => GetApi<InventoryApi>();
 
         /// <summary>
+        /// Gets the <see cref="InvoiceInApi"/>.
+        /// </summary>
+        public InvoiceInApi InvoiceIn => GetApi<InvoiceInApi>();
+
+        /// <summary>
         /// Gets the <see cref="InvoiceOutApi"/>.
         /// </summary>
         public InvoiceOutApi InvoiceOut => GetApi<InvoiceOutApi>();

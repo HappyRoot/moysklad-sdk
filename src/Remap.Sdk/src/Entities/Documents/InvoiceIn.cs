@@ -1,22 +1,14 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
 
 namespace Confiti.MoySklad.Remap.Entities
 {
     /// <summary>
-    /// Represents an supply.
+    /// Represents an invoice out.
     /// </summary>
-    public class Supply : Document
+    public class InvoiceIn : Document
     {
-        //private ListEntity<SupplyPosition> positions;
-        //private PurchaseOrder purchaseOrder;
-        //private String incomingNumber;
-        //private LocalDateTime incomingDate;
-        //private FactureIn factureIn;
-        //private List<InvoiceIn> invoicesIn;
-        //private List<FinanceDocumentMarker> payments;
-        //private List<PurchaseReturn> returns;
-
         #region Properties
 
         /// <summary>
@@ -44,16 +36,36 @@ namespace Confiti.MoySklad.Remap.Entities
         public Contract Contract { get; set; }
 
         /// <summary>
+        /// Gets or sets the Code.
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Incoming Date.
+        /// </summary>
+        public DateTime? IncomingDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Incoming Date.
+        /// </summary>
+        public double? IncomingNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the purchase order.
+        /// </summary>
+        /// <value>The customer order.</value>
+        public PurchaseOrder PurchaseOrder { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Supplies.
+        /// </summary>
+        public Supply[] Supplies { get; set; }
+
+        /// <summary>
         /// Gets or sets the organization account.
         /// </summary>
         /// <value>The organization account.</value>
         public AgentAccount OrganizationAccount { get; set; }
-
-        /// <summary>
-        /// Gets or sets the overhead.
-        /// </summary>
-        /// <value>The overhead.</value>
-        public DocumentOverhead Overhead { get; set; }
 
         /// <summary>
         /// Gets or sets the payed sum.
@@ -62,12 +74,24 @@ namespace Confiti.MoySklad.Remap.Entities
         public long? PayedSum { get; set; }
 
         /// <summary>
+        /// Gets or sets the payment planned date.
+        /// </summary>
+        /// <value>The date when the payment planned date.</value>
+        public DateTime? PaymentPlannedMoment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the payments.
+        /// </summary>
+        /// <value>The payments.</value>
+        public PaymentDocument[] Payments { get; set; }
+
+        /// <summary>
         /// Gets or sets the positions.
         /// </summary>
         /// <value>The positions.</value>
         [DefaultValue("{}")]
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PagedEntities<SupplyPosition> Positions { get; set; } = new PagedEntities<SupplyPosition>();
+        public PagedEntities<InvoicePosition> Positions { get; set; } = new PagedEntities<InvoicePosition>();
 
         /// <summary>
         /// Gets or sets the project.
@@ -82,6 +106,12 @@ namespace Confiti.MoySklad.Remap.Entities
         public Rate Rate { get; set; }
 
         /// <summary>
+        /// Gets or sets the shipped sum.
+        /// </summary>
+        /// <value>The shipped sum.</value>
+        public long? ShippedSum { get; set; }
+
+        /// <summary>
         /// Gets or sets the state.
         /// </summary>
         /// <value>The state.</value>
@@ -92,12 +122,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         /// <value>The store.</value>
         public Store Store { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tax system.
-        /// </summary>
-        /// <value>The tax system.</value>
-        public DocumentTaxSystem? TaxSystem { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to the vat is enabled.
@@ -117,16 +141,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <value>The vat sum.</value>
         public long? VatSum { get; set; }
 
-        /// <summary>
-        /// Gets or sets the purchase order.
-        /// </summary>
-        /// <value>The purchase order.</value>
-        public PurchaseOrder PurchaseOrder { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Invoices.
-        /// </summary>
-        public InvoiceIn[] InvoicesIn {  get; set; }
         #endregion Properties
     }
 }

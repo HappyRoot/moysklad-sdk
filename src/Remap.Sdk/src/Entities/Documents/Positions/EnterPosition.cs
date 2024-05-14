@@ -29,6 +29,10 @@
         /// <value>The reason.</value>
         public string Reason { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Slot
+        /// </summary>
+        public Slot Slot { get; set; }
         #endregion Properties
     }
 }
