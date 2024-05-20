@@ -31,11 +31,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <value>The quantity.</value>
         public double? Quantity { get; set; }
 
-        /// <summary>
-        /// Gets or sets the TrackingCodes
-        /// </summary>
-        public TrackingCode[] TrackingCodes { get; set; }
-
         #endregion Properties
     }
 }
