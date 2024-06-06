@@ -1,4 +1,6 @@
-﻿namespace Confiti.MoySklad.Remap.Entities
+﻿using System.Runtime.Serialization;
+
+namespace Confiti.MoySklad.Remap.Entities
 {
     /// <summary>
     /// Тип маркировки
@@ -8,14 +10,17 @@
         /// <summary>
         /// код маркировки товара
         /// </summary>
+        [EnumMember(Value = "trackingcode")]
         Trackingcode,
         /// <summary>
         /// код маркировки потребительской упаковки
         /// </summary>
+        [EnumMember(Value = "consumerpack")]
         Consumerpack,
         /// <summary>
         /// код транспортной упаковки
         /// </summary>
+        [EnumMember(Value = "transportpack")]
         Transportpack
     }
 

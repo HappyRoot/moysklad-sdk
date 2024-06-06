@@ -80,5 +80,15 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         [EnumMember(Value = "WATER")]
         Water,
+        /// <summary>
+        /// Tracking type for FOOD_SUPPLEMENT products.
+        /// </summary>
+        [EnumMember(Value = "FOOD_SUPPLEMENT")]
+        FoodSupplement,
+        /// <summary>
+        /// Tracking type for SANITIZER products.
+        /// </summary>
+        [EnumMember(Value = "SANITIZER")]
+        SANITIZER,
     }
 }

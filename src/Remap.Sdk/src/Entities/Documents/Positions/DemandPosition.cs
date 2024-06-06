@@ -34,11 +34,6 @@
         /// </summary>
         public Slot Slot { get; set; }
 
-        /// <summary>
-        /// Gets or sets the TrackingCodes
-        /// </summary>
-        public TrackingCode[] TrackingCodes { get; set; }
-
         #endregion Properties
     }
 }
