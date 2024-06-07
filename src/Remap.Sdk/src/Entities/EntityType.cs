@@ -8,6 +8,11 @@ namespace Confiti.MoySklad.Remap.Entities
     public enum EntityType
     {
         /// <summary>
+        /// Usersettings entity type.
+        /// </summary>
+        [EnumMember(Value = "usersettings")]
+        Usersettings
+        /// <summary>
         /// Employee entity type.
         /// </summary>
         [EnumMember(Value = "employee")]
