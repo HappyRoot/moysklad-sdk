@@ -11,7 +11,7 @@ namespace Confiti.MoySklad.Remap.Entities
         /// Usersettings entity type.
         /// </summary>
         [EnumMember(Value = "usersettings")]
-        Usersettings
+        Usersettings,
         /// <summary>
         /// Employee entity type.
         /// </summary>
