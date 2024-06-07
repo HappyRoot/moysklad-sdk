@@ -223,7 +223,12 @@ namespace Confiti.MoySklad.Remap.Api
         /// Gets the <see cref="UomApi"/>.
         /// </summary>
         public UomApi Uom => GetApi<UomApi>();
-       
+
+        /// <summary>
+        /// Gets the <see cref="UserSettingsApi"/>.
+        /// </summary>
+        public UserSettingsApi UserSettings => GetApi<UserSettingsApi>();
+
         /// <summary>
         /// Gets the <see cref="VariantApi"/>.
         /// </summary>

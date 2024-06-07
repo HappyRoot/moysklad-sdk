@@ -2,6 +2,8 @@ using System;
 
 namespace Confiti.MoySklad.Remap.Entities
 {
+
+
     /// <summary>
     /// Represents an entity containing <see cref="Meta"/>.
     /// </summary>
