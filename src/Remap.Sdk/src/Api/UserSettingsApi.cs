@@ -17,7 +17,7 @@ namespace Confiti.MoySklad.Remap.Api
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="credentials">The MoySklad credentials.</param>
         public UserSettingsApi(HttpClient httpClient, MoySkladCredentials credentials)
-            : base("/api/remap/1.2/usersettings", httpClient, credentials)
+            : base("/api/remap/1.2/context/usersettings", httpClient, credentials)
         {
         }
 
