@@ -90,5 +90,10 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         [EnumMember(Value = "SANITIZER")]
         SANITIZER,
+        /// <summary>
+        /// Tracking type for MEDICAL_DEVICES products.
+        /// </summary>
+        [EnumMember(Value = "MEDICAL_DEVICES")]
+        MEDICAL_DEVICES,
     }
 }
