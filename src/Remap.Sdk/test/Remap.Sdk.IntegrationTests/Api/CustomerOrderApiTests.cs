@@ -17,7 +17,7 @@ namespace Confiti.MoySklad.Remap.IntegrationTests.Api
         [Test]
         public async Task GetCustomerOrdersAsync_should_return_status_code_200()
         {
-            var query = new ApiParameterBuilder<CustomerOrdersQuery>();
+            var query = new ApiParameterBuilder<CustomerOrderQuery>();
             var response = await _subject.GetAllAsync(query);
 
             response.StatusCode.Should().Be(200);

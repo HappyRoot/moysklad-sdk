@@ -131,6 +131,21 @@ namespace Confiti.MoySklad.Remap.Client
             return CallAsync<TEntity>(requestContext);
         }
 
-        #endregion Methods
-    }
+
+        public virtual Task<ApiResponse> AddPositions<TEntity>(Guid documentId, TEntity[] positions) where TEntity : DocumentPosition
+        {
+
+            var contextPath = $"{Path}/{documentId}/positions/";
+                
+            var requestContext = new RequestContext(contextPath, HttpMethod.Post)
+                .WithBody(positions);
+
+            return CallAsync(requestContext);
+        }
+
+
+}
+
+
+    #endregion Methods
 }
