@@ -40,6 +40,7 @@ namespace Remap.Sdk.IntegrationTests.Api
 
             var response = await _subject.CreateAsync(products);
             response.StatusCode.Should().Be(200);
+            response.Payload.Length.Should().Be(2);
         }
 
         [SetUp]
