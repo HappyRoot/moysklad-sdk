@@ -1,7 +1,9 @@
 using Confiti.MoySklad.Remap.Client;
 using Confiti.MoySklad.Remap.Entities;
 using Confiti.MoySklad.Remap.Models;
+using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Confiti.MoySklad.Remap.Api
 {
@@ -37,6 +39,21 @@ namespace Confiti.MoySklad.Remap.Api
             Images = new ImageApi(Path, httpClient, credentials);
         }
 
+
+        /// <summary>
+        /// Uploads an array of products in MoySklad
+        /// </summary>
+        /// <param name="entities">Array of products which should be uploaded</param>
+        public virtual Task<ApiResponse> CreateAsync(Product[] entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            var requestContext = new RequestContext(HttpMethod.Post)
+                .WithBody(entities);
+
+            return CallAsync(requestContext);
+        }
         #endregion Ctor
     }
 }
