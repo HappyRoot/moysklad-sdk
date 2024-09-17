@@ -131,7 +131,13 @@ namespace Confiti.MoySklad.Remap.Client
             return CallAsync<TEntity>(requestContext);
         }
 
-
+        /// <summary>
+        /// Add positions to document specified by id.
+        /// </summary>
+        /// <typeparam name="TEntity">Type of positons based on specific document type</typeparam>
+        /// <param name="documentId">Id of document that should be associated with positions</param>
+        /// <param name="positions">Array of positions to be added to the </param>
+        /// <returns><see cref="Task"/> containing the API response with the updated <typeparamref name="TEntity"/></returns>
         public virtual Task<ApiResponse> AddPositions<TEntity>(Guid documentId, TEntity[] positions) where TEntity : DocumentPosition
         {
 
