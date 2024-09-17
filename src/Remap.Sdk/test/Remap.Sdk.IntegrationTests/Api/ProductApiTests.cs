@@ -38,7 +38,7 @@ namespace Remap.Sdk.IntegrationTests.Api
                 }
             };
 
-            var response = await _subject.CreateProductsAsync(products);
+            var response = await _subject.CreateAsync(products);
             response.StatusCode.Should().Be(200);
         }
 

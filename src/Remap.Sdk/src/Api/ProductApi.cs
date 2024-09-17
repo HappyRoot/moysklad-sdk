@@ -44,7 +44,7 @@ namespace Confiti.MoySklad.Remap.Api
         /// Uploads an array of products in MoySklad
         /// </summary>
         /// <param name="entities">Array of products which should be uploaded</param>
-        public virtual Task<ApiResponse> CreateProductsAsync(Product[] entities)
+        public virtual Task<ApiResponse> CreateAsync(Product[] entities)
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
