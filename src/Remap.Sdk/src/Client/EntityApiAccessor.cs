@@ -9,6 +9,45 @@ namespace Confiti.MoySklad.Remap.Client
     /// <summary>
     /// Represents a API to interact with the <typeparamref name="TEntity"/> endpoint.
     /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TEntityBuilder"></typeparam>
+    /// <typeparam name="TEntitiesBuilder"></typeparam>
+    public abstract class DocumentApiAccessor<TEntity, TEntityBuilder, TEntitiesBuilder> : EntityApiAccessor<TEntity, TEntityBuilder, TEntitiesBuilder>
+        where TEntity : Document
+        where TEntityBuilder : ApiParameterBuilder
+        where TEntitiesBuilder : ApiParameterBuilder
+    {
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="relativePath"></param>
+        /// <param name="httpClient"></param>
+        /// <param name="credentials"></param>
+        protected DocumentApiAccessor(string relativePath, HttpClient httpClient, MoySkladCredentials credentials = null) : base(relativePath, httpClient, credentials)
+        {
+        }
+
+        /// <summary>
+        /// Add positions to document specified by id.
+        /// </summary>
+        /// <param name="documentId">Id of document that should be associated with positions</param>
+        /// <param name="positions">Array of positions to be added to the </param>
+        /// <returns><see cref="Task"/> containing the API response with the updated <typeparamref name="TEntity"/></returns>
+        public virtual Task<ApiResponse> AddPositions<TPosition>(Guid documentId, TPosition[] positions)
+            where TPosition : DocumentPosition
+        {
+            var contextPath = $"{Path}/{documentId}/positions/";
+
+            var requestContext = new RequestContext(contextPath, HttpMethod.Post)
+                .WithBody(positions);
+
+            return CallAsync(requestContext);
+        }
+    }
+
+    /// <summary>
+    /// Represents a API to interact with the <typeparamref name="TEntity"/> endpoint.
+    /// </summary>
     /// <typeparam name="TEntity">The type of the meta entity.</typeparam>
     /// <typeparam name="TEntityBuilder">The type of the <see cref="ApiParameterBuilder"/> to get single entity.</typeparam>
     /// <typeparam name="TEntitiesBuilder">The type of the <see cref="ApiParameterBuilder"/> to get list of the entity.</typeparam>
@@ -49,6 +88,21 @@ namespace Confiti.MoySklad.Remap.Client
                 .WithBody(entity);
 
             return CallAsync<TEntity>(requestContext);
+        }
+
+        /// <summary>
+        /// Uploads an array of entites in MoySklad
+        /// </summary>
+        /// <param name="entities">Array of products which should be uploaded</param>
+        public virtual Task<ApiResponse<TEntity[]>> CreateAsync(TEntity[] entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            var requestContext = new RequestContext(HttpMethod.Post)
+                .WithBody(entities);
+
+            return CallAsync<TEntity[]>(requestContext);
         }
 
         /// <summary>
@@ -130,27 +184,7 @@ namespace Confiti.MoySklad.Remap.Client
 
             return CallAsync<TEntity>(requestContext);
         }
-
-        /// <summary>
-        /// Add positions to document specified by id.
-        /// </summary>
-        /// <typeparam name="TEntity">Type of positons based on specific document type</typeparam>
-        /// <param name="documentId">Id of document that should be associated with positions</param>
-        /// <param name="positions">Array of positions to be added to the </param>
-        /// <returns><see cref="Task"/> containing the API response with the updated <typeparamref name="TEntity"/></returns>
-        public virtual Task<ApiResponse> AddPositions<TEntity>(Guid documentId, TEntity[] positions) where TEntity : DocumentPosition
-        {
-
-            var contextPath = $"{Path}/{documentId}/positions/";
-                
-            var requestContext = new RequestContext(contextPath, HttpMethod.Post)
-                .WithBody(positions);
-
-            return CallAsync(requestContext);
-        }
-
-
-}
+    }
 
 
     #endregion Methods

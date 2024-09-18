@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class MoveApi : EntityApiAccessor<Move, ApiParameterBuilder<MoveQuery>, ApiParameterBuilder<MoveQuery>>
+    public class MoveApi : DocumentApiAccessor<Move, ApiParameterBuilder<MoveQuery>, ApiParameterBuilder<MoveQuery>>
     {
         #region Ctor
 

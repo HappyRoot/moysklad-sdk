@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class SupplyApi : EntityApiAccessor<Supply, ApiParameterBuilder<SupplyQuery>, ApiParameterBuilder<SupplyQuery>>
+    public class SupplyApi : DocumentApiAccessor<Supply, ApiParameterBuilder<SupplyQuery>, ApiParameterBuilder<SupplyQuery>>
     {
         #region Ctor
 

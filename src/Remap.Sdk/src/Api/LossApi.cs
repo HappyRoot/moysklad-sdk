@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class LossApi : EntityApiAccessor<Loss, ApiParameterBuilder<LossQuery>, ApiParameterBuilder<LossQuery>>
+    public class LossApi : DocumentApiAccessor<Loss, ApiParameterBuilder<LossQuery>, ApiParameterBuilder<LossQuery>>
     {
         #region Ctor
 

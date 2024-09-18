@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class InvoiceOutApi : EntityApiAccessor<InvoiceOut, ApiParameterBuilder<InvoiceOutQuery>, ApiParameterBuilder<InvoiceOutQuery>>
+    public class InvoiceOutApi : DocumentApiAccessor<InvoiceOut, ApiParameterBuilder<InvoiceOutQuery>, ApiParameterBuilder<InvoiceOutQuery>>
     {
         #region Properties
 

@@ -6,7 +6,7 @@ using System.Net.Http;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class EnterApi : EntityApiAccessor<Enter, ApiParameterBuilder<EnterQuery>, ApiParameterBuilder<EnterQuery>>
+    public class EnterApi : DocumentApiAccessor<Enter, ApiParameterBuilder<EnterQuery>, ApiParameterBuilder<EnterQuery>>
     {
         #region Ctor
 

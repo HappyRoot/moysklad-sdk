@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Confiti.MoySklad.Remap.Api
 {
     /// <inheritdoc/>
-    public class InventoryApi : EntityApiAccessor<Inventory, ApiParameterBuilder<InventoryQuery>, ApiParameterBuilder<InventoryQuery>>
+    public class InventoryApi : DocumentApiAccessor<Inventory, ApiParameterBuilder<InventoryQuery>, ApiParameterBuilder<InventoryQuery>>
     {
         #region Properties
 
