@@ -40,6 +40,15 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <value>The stock.</value>
         public double? Stock { get; set; }
 
+        /// <summary>
+        /// Get or sets the property of weighed.
+        /// </summary>
+        public bool Weighed { get; set; } 
+        
+        /// <summary>
+        /// Get or sets the weight. 
+        /// </summary>
+        public double? Weight { get; set; }
         #endregion Properties
     }
 }

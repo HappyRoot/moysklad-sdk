@@ -27,6 +27,28 @@ namespace Confiti.MoySklad.Remap.IntegrationTests.Api
         }
 
         [Test]
+        public async Task GetAssortmentAsync_should_return_payload_with_weighed()
+        {
+            var query = new AssortmentApiParameterBuilder();
+
+
+            query.Expand()
+                .With(m => m.Components)
+                .And.With(m => m.Components.Assortment);
+
+            query.Limit(100);
+            query.Parameter(m => m.Code)
+                .Should()
+                .Be("MILK-1");
+
+            var response = await _subject.GetAllAsync(query);
+
+            response.StatusCode.Should().Be(200);
+            response.Payload.Rows[0].Weighed.Should().Be(true);
+            response.Payload.Rows[0].Weight.Should().Be(500);
+        }
+
+        [Test]
         public async Task GetAssortmentAsync_with_query_should_return_status_code_200()
         {
             var query = new AssortmentApiParameterBuilder();
