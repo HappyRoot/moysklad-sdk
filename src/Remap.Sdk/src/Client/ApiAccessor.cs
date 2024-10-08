@@ -1,6 +1,7 @@
-using Confiti.MoySklad.Remap.Models;
+﻿using Confiti.MoySklad.Remap.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Remap.Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -192,26 +193,45 @@ namespace Confiti.MoySklad.Remap.Client
                 {
                     var errorMessage = $"Error calling '{callerName}'. HTTP status code - {status}\n";
 
-                    ApiErrorsResponse errorsResponse = null;
+                    // В зависимости от того, отправляется ли складу несколько запросов (например несколько товаров) или один (например - документ приёмки) он отвечает разными ошибками. Если одним запросом несколкьо - отвечает массивом. Иначе просто объектом.
+                    ApiErrorReponseArray errorsResponseArray = new ApiErrorReponseArray();
                     if (response.Content.Headers.ContentType.MediaType.Contains("application/json"))
                     {
+                        
                         try
                         {
-                            errorsResponse = (ApiErrorsResponse)await DeserializeAsync(response, typeof(ApiErrorsResponse));
+                            var errorJson = await response.Content.ReadAsStringAsync();
+                            if (!string.IsNullOrWhiteSpace(errorJson) && errorJson.TrimStart().StartsWith("{"))
+                            {
+                                var errorsResponse = (ApiErrorsResponse)await DeserializeAsync(response, typeof(ApiErrorsResponse));
+                                errorsResponseArray.ErrorsResponseArray = new[] { errorsResponse };
+                            }
+                            else if (!string.IsNullOrWhiteSpace(errorJson) && errorJson.TrimStart().StartsWith("["))
+                            {
+                                
+                                var errorsResponses = (ApiErrorsResponse[])await DeserializeAsync(response, typeof(ApiErrorsResponse[]));
+                                errorsResponseArray.ErrorsResponseArray = errorsResponses;
+                            }
+
                         }
-                        catch (Exception) { }
+                        catch (Exception) {
+                             throw new ApiException(status, "Internal error. Something went wrong when trying to deserialize errors from MoySklad");
+                        }
                     }
-
-                    if (errorsResponse?.Errors?.Any() == true)
+                    foreach (var errorsResponse in errorsResponseArray.ErrorsResponseArray)
                     {
-                        var details = errorsResponse.Errors
-                            .Select(error => $"Error code: {error.Code}\n Error description: {error.Error}\n More info: {error.MoreInfo}\n");
-                        errorMessage += string.Join("\n", details);
+                        if (errorsResponse?.Errors?.Any() == true)
+                        {
+                            var details = errorsResponse.Errors
+                                .Select(error => $"Error code: {error.Code}\n Error description: {error.Error}\n More info: {error.MoreInfo}\n");
+                            errorMessage += string.Join("\n", details);
+                        }
                     }
 
+                    var combinedErrorList = errorsResponseArray.ErrorsResponseArray.SelectMany(responseErrors => responseErrors.Errors).ToArray();
                     var headers = response.Headers
                         .ToDictionary(nameValues => nameValues.Key, nameValues => string.Join(", ", nameValues.Value));
-                    throw new ApiException(status, errorMessage, headers, errorsResponse?.Errors);
+                    throw new ApiException(status, errorMessage, headers, combinedErrorList);
                 }
 
                 request.Content?.Dispose();
