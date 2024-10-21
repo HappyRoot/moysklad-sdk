@@ -29,6 +29,12 @@ namespace Confiti.MoySklad.Remap.Entities
         /// Gtin barcode type.
         /// </summary>
         [EnumMember(Value = "gtin")]
-        Gtin
+        Gtin,
+
+        /// <summary>
+        /// Upc barcode type.
+        /// </summary>
+        [EnumMember(Value = "upc")]
+        Upc
     }
 }
