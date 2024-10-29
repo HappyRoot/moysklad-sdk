@@ -1,0 +1,50 @@
+﻿using Confiti.MoySklad.Remap.Api;
+using Confiti.MoySklad.Remap.Client;
+using Confiti.MoySklad.Remap.Entities;
+using Confiti.MoySklad.Remap.IntegrationTests;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using Confiti.MoySklad.Remap.Models;
+using FluentAssertions;
+
+namespace Remap.Sdk.IntegrationTests.Api
+{
+    public class InvoiceApiTests
+    {
+        private MoySkladCredentials _credentials;
+        private InvoiceInApi _invoiceInApi;
+
+
+        [Test]
+        public async Task InvoiceIn_Should_Correctly_Return()
+        {
+            var query = new ApiParameterBuilder<InvoiceIn>();
+            query.Limit(100);
+            var response = await _invoiceInApi.GetAllAsync();
+            response.StatusCode.Should().Be(200);
+        }
+
+        [SetUp]
+        public void Init()
+        {
+            var account = TestAccount.Create();
+            _credentials = new MoySkladCredentials()
+            {
+                Username = account.Username,
+                Password = account.Password
+            };
+
+            var httpClientHandler = new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip
+            };
+            _invoiceInApi = new InvoiceInApi(new HttpClient(httpClientHandler), _credentials);
+        }
+    }
+}

@@ -48,7 +48,7 @@ namespace Confiti.MoySklad.Remap.Entities
         /// <summary>
         /// Gets or sets the Incoming Date.
         /// </summary>
-        public double? IncomingNumber { get; set; }
+        public string IncomingNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the purchase order.
