@@ -30,12 +30,6 @@ namespace Confiti.MoySklad.Remap.Entities
         public AttributeValue[] Attributes { get; set; }
 
         /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
-
-        /// <summary>
         /// Gets or sets the delivery planned date.
         /// </summary>
         /// <value>The date when the delivery planned date.</value>
@@ -78,12 +72,6 @@ namespace Confiti.MoySklad.Remap.Entities
         [DefaultValue("{}")]
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PagedEntities<PurchaseOrderPosition> Positions { get; set; } = new PagedEntities<PurchaseOrderPosition>();
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.

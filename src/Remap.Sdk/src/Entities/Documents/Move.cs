@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Remap.Sdk.Entities.Documents;
 using System.ComponentModel;
 
 namespace Confiti.MoySklad.Remap.Entities
@@ -6,7 +7,7 @@ namespace Confiti.MoySklad.Remap.Entities
     /// <summary>
     /// Represents an move.
     /// </summary>
-    public class Move : Document
+    public class Move : ProjectContractDocument
     {
         // todo
         //private InternalOrder internalOrder;
@@ -32,12 +33,6 @@ namespace Confiti.MoySklad.Remap.Entities
         public AttributeValue[] Attributes { get; set; }
 
         /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
-
-        /// <summary>
         /// Gets or sets the organization account.
         /// </summary>
         /// <value>The organization account.</value>
@@ -56,12 +51,6 @@ namespace Confiti.MoySklad.Remap.Entities
         [DefaultValue("{}")]
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PagedEntities<MovePosition> Positions { get; set; } = new PagedEntities<MovePosition>();
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Remap.Sdk.Entities.Documents;
 using System.ComponentModel;
 
 namespace Confiti.MoySklad.Remap.Entities
@@ -6,7 +7,7 @@ namespace Confiti.MoySklad.Remap.Entities
     /// <summary>
     /// Represents an retail demand.
     /// </summary>
-    public class RetailDemand : Document
+    public class RetailDemand : ProjectContractDocument
     {
         #region Properties
 
@@ -45,12 +46,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         /// <value>The check sum.</value>
         public long? CheckSum { get; set; }
-
-        /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
 
         /// <summary>
         /// Gets or sets the customer order.
@@ -125,12 +120,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         /// <value>The prepayment 'QR-code' sum.</value>
         public long? PrepaymentQrSum { get; set; }
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the sum paid by 'QR-code'.

@@ -1,9 +1,11 @@
+using Remap.Sdk.Entities.Documents;
+
 namespace Confiti.MoySklad.Remap.Entities
 {
     /// <summary>
     /// Represents an payment document.
     /// </summary>
-    public abstract class PaymentDocument : Document
+    public abstract class PaymentDocument : ProjectContractDocument
     {
         #region Properties
 
@@ -20,22 +22,10 @@ namespace Confiti.MoySklad.Remap.Entities
         public AttributeValue[] Attributes { get; set; }
 
         /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
-
-        /// <summary>
         /// Gets or sets the payment purpose.
         /// </summary>
         /// <value>The payment purpose.</value>
         public string PaymentPurpose { get; set; }
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.

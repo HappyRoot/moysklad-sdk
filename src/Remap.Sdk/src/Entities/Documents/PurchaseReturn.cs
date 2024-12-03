@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Remap.Sdk.Entities.Documents;
 using System.ComponentModel;
 
 namespace Confiti.MoySklad.Remap.Entities
@@ -6,7 +7,7 @@ namespace Confiti.MoySklad.Remap.Entities
     /// <summary>
     /// Represents an purchase return.
     /// </summary>
-    public class PurchaseReturn : Document
+    public class PurchaseReturn : ProjectContractDocument
     {
         #region Properties
 
@@ -35,12 +36,6 @@ namespace Confiti.MoySklad.Remap.Entities
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
-
-        /// <summary>
         /// Gets or sets the organization account.
         /// </summary>
         /// <value>The organization account.</value>
@@ -65,12 +60,6 @@ namespace Confiti.MoySklad.Remap.Entities
         [DefaultValue("{}")]
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PagedEntities<PurchaseReturnPosition> Positions { get; set; } = new PagedEntities<PurchaseReturnPosition>();
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.

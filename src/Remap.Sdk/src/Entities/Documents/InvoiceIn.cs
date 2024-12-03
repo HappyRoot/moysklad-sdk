@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Remap.Sdk.Entities.Documents;
 using System;
 using System.ComponentModel;
 
@@ -7,7 +8,7 @@ namespace Confiti.MoySklad.Remap.Entities
     /// <summary>
     /// Represents an invoice out.
     /// </summary>
-    public class InvoiceIn : Document
+    public class InvoiceIn : ProjectContractDocument
     {
         #region Properties
 
@@ -28,12 +29,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         /// <value>The attribute values.</value>
         public AttributeValue[] Attributes { get; set; }
-
-        /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
 
         /// <summary>
         /// Gets or sets the Code.
@@ -92,12 +87,6 @@ namespace Confiti.MoySklad.Remap.Entities
         [DefaultValue("{}")]
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PagedEntities<InvoicePosition> Positions { get; set; } = new PagedEntities<InvoicePosition>();
-
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.

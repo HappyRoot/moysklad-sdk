@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Remap.Sdk.Entities.Documents;
 using System;
 using System.ComponentModel;
 
@@ -7,7 +8,7 @@ namespace Confiti.MoySklad.Remap.Entities
     /// <summary>
     /// Represents an customer order.
     /// </summary>
-    public class CustomerOrder : Document
+    public class CustomerOrder : ProjectContractDocument
     {
         // todo
         // private List<PurchaseOrder> purchaseOrders;
@@ -31,12 +32,6 @@ namespace Confiti.MoySklad.Remap.Entities
         /// </summary>
         /// <value>The attribute values.</value>
         public AttributeValue[] Attributes { get; set; }
-
-        /// <summary>
-        /// Gets or sets the contract.
-        /// </summary>
-        /// <value>The contract.</value>
-        public Contract Contract { get; set; }
 
         /// <summary>
         /// Gets or sets the delivery planned date.
@@ -88,11 +83,6 @@ namespace Confiti.MoySklad.Remap.Entities
         [JsonProperty(NullValueHandling = NullValueHandling.Include, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PagedEntities<CustomerOrderPosition> Positions { get; set; } = new PagedEntities<CustomerOrderPosition>();
 
-        /// <summary>
-        /// Gets or sets the project.
-        /// </summary>
-        /// <value>The project.</value>
-        public Project Project { get; set; }
 
         /// <summary>
         /// Gets or sets the rate.
